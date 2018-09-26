@@ -11,4 +11,5 @@ class Bookmark
     bookmarks = conn.exec("SELECT * FROM bookmarks;")
     bookmarks.map { |bookmark| bookmark['url'] }
   end
+
 end
