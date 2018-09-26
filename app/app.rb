@@ -10,6 +10,8 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/bookmarks' do
+    p ENV['PWD']
+    p ENV['RUBY_VERSION']
     @bookmarks = Bookmark.all
     erb :bookmarks
   end
