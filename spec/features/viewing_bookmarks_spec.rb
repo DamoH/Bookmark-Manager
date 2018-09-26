@@ -8,11 +8,14 @@ feature 'Viewing the bookmarks' do
   scenario 'display bookmarks list' do
 
     conn = PG.connect( dbname: 'bookmark_manager_test')
-
-    conn.exec("INSERT INTO bookmarks VALUES (1, 'http://www.makersacademy.com');")
-    conn.exec("INSERT INTO bookmarks VALUES (2, 'http://www.destroyallsoftware.com');")
-    conn.exec("INSERT INTO bookmarks VALUES (3, 'http://www.google.com');")
-
+    p "**********"
+    p conn
+    conn.exec("INSERT INTO bookmarks (url) VALUES('http://www.makersacademy.com')")
+    conn.exec("INSERT INTO bookmarks (url) VALUES('http://www.destroyallsoftware.com')")
+      
+    conn.exec("INSERT INTO bookmarks (url) VALUES('http://www.google.com')")
+    p conn
+    p "I am here"
     visit('/bookmarks')
     # click_button 'View Bookmark List'
     expect(page).to have_content("http://www.makersacademy.com")
